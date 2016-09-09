@@ -1,4 +1,7 @@
-$base-font-size: 10pt;
+$baseline: 0.35cm;
+$base-line-height: 1.5;
+$base-font-size: $baseline / $base-line-height;
+
 @import "./utils.scss";
 
 $grey: #888;
@@ -8,25 +11,34 @@ $phi: 1.618;
 
 html {
   // set base font-size as grid height
+  line-height: $base-line-height;
   font-size: $base-font-size;
   // horizontal grid
-  @include showVerticalGrid(#88c);
+ /* @include showVerticalGrid(#88c); */
 }
+// highlight
+body > * {
+ /* background-color: rgba(255, 0, 0, 0.3); */
+}
+
 
 
 body {
   color: $black;
   font-family: 'Roboto Slab';
   font-weight: 300;
+  font-size: $base-font-size;
 }
 
 table {
   width: 100%;
   tr {
+    line-height: 1.3;
     th, td {
+      border: 0;
       text-align: left;
       small {
-        font-size: .75em;
+        font-size: 85%;
         display: block;
         padding-left: 2em;
       }
@@ -36,31 +48,57 @@ table {
 
 p {
   // up above baseline
-  position: relative;
-  top: -1pt;
+  // position: relative;
+  // top: -1pt;
   color: lighten($black, 10%);
+  text-align: justify;
+  margin-top: 0;
+  /* @include fontToBaseline(10pt, 0, 0); */
+  margin-bottom: $baseline;
 }
 
-
-// highlight
-body > * {
- /* background-color: rgba(255, 0, 0, 0.3); */
-}
+/* code { */
+/*   border-radius: 1pt; */
+/*   background: #fdd; */
+/*   padding: .2em; */
+/*   font-size: .8em; */
+/*   color: color("red", "darken-2"); */
+/* } */
 
 hr {
   position: relative;
-  top: -1pt;
+  top: -.5pt;
+  margin-bottom: -.5pt;
 }
 
+@for $i from 1 through 6 {
+  h#{$i} {
+    position: relative;
+    $font-size: $base-font-size + 0.5/($i);
+    font-size: #{$font-size}em;
+    /* line-height: $base-font-size * $base-line-height / ($base-font-size * $font-size); */
+    position: relative;
+    &:after {
+      content: quot($font-size);
+      display: block;
+      position: absolute;
+      right: 0;
+    }
+  }
+}
+
+
 h1, h2, h3, h4, h5, h6 {
-  margin: 0;
+  /* margin: 0; */
   font-weight: inherit;
+  /* @include clearfix(); */
 }
 
 h2 {
   position: relative;
+  top: .08cm;
   // push to baseline
-  top: 1pt;
+  /* top: 1pt; */
 }
 
 h3 {
@@ -68,37 +106,25 @@ h3 {
   // push to baseline
   top: -1pt;
   font-weight: 600;
-  margin-top: 3*$baseline;
-  margin-bottom: 2*$baseline;
+  /* margin-top: 3*$baseline; */
+  /* margin-bottom: 2*$baseline; */
   /* text-transform: uppercase; */
 }
 
 h5 {
-  color: $grey;
+  margin: 0;
   text-transform: uppercase;
   line-height: 2;
 }
 
-
-$fs: 40pt;
-@for $i from 1 through 6 {
-  h#{$i} {
-    /* @include fontToBaseline($fs, 0, 0); */
-    /* margin-bottom: $baseline; */
-    /* &:before { */
-    /*   content: quote($fs); */
-    /*   display: block; */
-    /*   position: absolute; */
-    /*   right: 0; */
-    /*   font-size: 8pt; */
-    /*   color: #fff; */
-    /* } */
-  }
-  $fs: ceil($fs / $phi);
+h6 {
+  margin: 0;
+  color: $grey;
 }
 
+
 hr {
-  margin-top: -1pt;
+  /* margin-top: -.5pt; */
   border-width: 1pt;
   border-color: $grey;
 }
@@ -130,19 +156,13 @@ a:visited {
   color: #3498db;
 }
 
-p {
-  text-align: justify;
-  margin-top: 0;
-  @include fontToBaseline(10pt, 0, 0);
-  margin-bottom: $baseline;
-}
 
 pre {
-  @include fontToBaseline(8pt, 1, 1);
-  background-color: rgba(0, 0, 0, 0.05);
+  /* @include fontToBaseline(8pt, 1, 1); */
+  background-color: rgba(0, 0, 0, 0.04);
   border: none;
-  margin: -1pt;
-  border: 1pt solid #888;
+  /* margin: -1pt; */
+  /* border: 1pt solid #888; */
   margin-bottom: $baseline;
 }
 
@@ -170,6 +190,11 @@ ul {
 .right {
   padding-left: $baseline;
   float: right;
+}
+
+.center {
+  display: block;
+  text-align: center;
 }
 
 .uppercase {

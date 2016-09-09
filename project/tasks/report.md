@@ -1,13 +1,35 @@
-##### Information Retrieval <span class="right">innopolis university <br> krikun gosha </span>
--------------------------
+#### Information Retrieval <span class="right">Innopolis University <br> Krikun Gosha</span>
+
+-------------------------------------------------------------------------------
 
 ## HW3 <small>Little Research Report</small>
 
-### Recall and Precision
+[repository](https://gitlab.com/krikun/ir-qq)
 
-We would compare mainly this two characteristic.
+### 0 Structure
 
-#### But at the first lets consider test doc set:
+```bash
+project/                 # little research project
+project/docs/            # test document set
+project/src/main/scala   # research scala src
+                      
+project/tasks/           # this reports from .md
+```
+
+build with sbt
+
+```bash
+# git clone ssh or https ..
+cd project
+sbt
+...
+
+> run
+```
+
+### 1 Doc set
+
+placed in `project/docs/` directory
 
 | docId | terms | <small> tokens </small> |
 | ----- | ------: | :-------- |
@@ -21,23 +43,12 @@ We would compare mainly this two characteristic.
 | docs/classes | 240 | <small> 430 </small> |
 | docs/sets | 506 | <small> 1854 </small> |
 
-This is scala code for do that:
-
-```scala
-import java.io.File
-
-class Document(file: File) {
-
-  val name = file.toString()
-  val value = io.Source.fromFile(file).mkString
-  // tokenization
-  val words = value.split("[\\p{Punct}\\s]+")
-  // simple terms retrieval, without even case
-  val dictionary = words.toSet
+<small class="center">Tabel 1. Roughly counted</small>
 
 
-}
-```
+### Scala code
+
+
 
 
 Aliquam erat volutpat.  Nunc eleifend leo vitae magna.  In id erat non orci commodo lobortis.  Proin neque massa, cursus ut, gravida ut, lobortis eget, lacus.  Sed diam.  Praesent fermentum tempor tellus.  Nullam tempus.  Mauris ac felis vel velit tristique imperdiet.  Donec at pede.  Etiam vel neque nec dui dignissim bibendum.  Vivamus id enim.  Phasellus neque orci, porta a, aliquet quis, semper a, massa.  Phasellus purus.  Pellentesque tristique imperdiet tortor.  Nam euismod tellus id erat.

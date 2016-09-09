@@ -17,6 +17,7 @@ object Main {
     val files = getListOfFiles("docs")
     val docs = files.map(file => new Document(file))
     var dictionary = HashMap.empty[String, Int]
+    var count = 0
     docs.map(doc => {
                print(" | " + doc.name + " | ")
                for ((key, value) <- doc.dictionary) {
@@ -27,12 +28,20 @@ object Main {
                }
                print(doc.dictionary.toList.length + " | ")
                print(doc.roughly.toList.length + " | ")
+               count += doc.words.length
                print("<small> " + doc.words.length + " </small> | ")
                println
              })
-    val stopwords = ListMap(dictionary.toSeq.sortWith(_._2 > _._2):_*).take(7)
-    stopwords.map{ case(key, value) => println(key + " : " + value) }
+    val stopwords = ListMap(dictionary.toSeq.sortWith(_._2 > _._2):_*).take(9)
+    var total = 0
+    stopwords.map{ case(key, value) => {
+                     total += value
+                     println(key + " : " + value)
+                   }
+    }
     println(dictionary.toList.length)
+    println(count)
+    println(total)
   }
 
 }

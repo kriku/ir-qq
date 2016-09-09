@@ -16,8 +16,8 @@ gulp.task('markdown', function() {
   return gulp.src('*.md')
     .pipe(markdownpdf({
       cssPath: "style/markdown.css",
-      paperBorder: "1.1cm",
-      paperFormat: "A5"
+      paperBorder: "1.8cm",
+      paperFormat: "A4"
     }))
     .pipe(gulp.dest('.'));
 });

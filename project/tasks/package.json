@@ -15,5 +15,8 @@
     "markdown-pdf": "^7.0.0",
     "modularscale-sass": "^2.1.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "flexboxgrid-sass": "^8.0.4",
+    "sass-flex-mixin": "^1.0.3"
+  }
 }

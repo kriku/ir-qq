@@ -43,26 +43,51 @@ placed in `project/docs/` directory
  | docs/classes | 227 | 240 | <small> 430 </small> | 
  | docs/sets | 453 | 506 | <small> 1854 </small> | 
 
-<small class="center">Tabel 1. Roughly counted</small>
-
-### 2.1 Terms
-
-Total terms:
+### 2.1 Total tokens
 
 ```markdown
-terms : 1709
+tokens : 16273
+terms  : 1709
 ```
+_tokens split by Punct and normalized to terms just by lowercase_
+
+```scala
+
+  val tokens = value.split("[\\p{Punct}\\s]+")
+  val words = tokens.map(word => word.toLowerCase())
+  val roughly = tokens.toSet
+
+```
+
+&nbsp;
+&nbsp;
+&nbsp;
+
+
+<div class="row">
+<div class="col-xs-7">
 
 ### 2.2 Stop words
 
-First 7 by frequency:
+First 7 by occurrence:
 
-```markdown
-the : 916
-of  : 430
-a   : 425
-is  : 317
-to  : 313
-in  : 294
-and : 277
-```
+| the | of  | a   | is  | to  | in  | and | scala | _total_ |
+|:----|:----|:----|:----|:----|:----|:----|:------|:------|
+| 916 | 430 | 425 | 317 | 313 | 294 | 277 | 226   | _2972_  |
+
+> As we can see, this is logarithmic distribution.
+  **scala** appears because of test doc set 
+  [src](http://docs.scala-lang.org/tutorials/)
+
+</div>
+<div class="col-xs-5">
+
+or, if you wanna, by percentage:
+![7 most frequency terms](ir-graph.png)
+
+</div>
+</div>
+
+
+
+### 2.3 

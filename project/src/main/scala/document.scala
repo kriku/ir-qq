@@ -8,7 +8,6 @@ class Document(file: File) {
   // tokenization
   val tokens = value.split("[\\p{Punct}\\s]+")
   val words = tokens.map(word => word.toLowerCase())
-
   val roughly = tokens.toSet
 
   var dictionary = HashMap.empty[String, Int]

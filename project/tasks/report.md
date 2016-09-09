@@ -78,8 +78,8 @@ First 9 by occurrence:
 #### Total: 3466 out of 16273 tokens
 
 > As we can see, this is logarithmic distribution.
-  **xs** and **scala** appears because of test doc set:
-  [src](http://docs.scala-lang.org/tutorials/)
+> **xs** and **scala** appears because of test doc set:
+> [src](http://docs.scala-lang.org/tutorials/)
 
 </div>
 <div class="col-xs">

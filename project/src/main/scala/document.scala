@@ -4,11 +4,11 @@ import scala.collection.immutable.HashMap
 class Document(file: File) {
 
   val name = file.toString()
-  val value = io.Source.fromFile(file).mkString
+  val raw = io.Source.fromFile(file).mkString
   // tokenization
-  val tokens = value.split("[\\p{Punct}\\s]+")
+  val tokens = raw.split("[\\p{Punct}\\s]+")
   val words = tokens.map(word => word.toLowerCase())
-  val roughly = tokens.toSet
+  val roughly = words.toSet
 
   var dictionary = HashMap.empty[String, Int]
 
@@ -19,7 +19,5 @@ class Document(file: File) {
       dictionary += (word -> 1)
     }
   }
-
-  // simple terms retrieval, without even case
 
 }

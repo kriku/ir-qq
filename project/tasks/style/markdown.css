@@ -1,0 +1,212 @@
+html {
+  font-size: 10pt;
+  position: relative; }
+  html:after {
+    content: '';
+    display: block !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: linear-gradient(rgba(136, 136, 204, 0.2) 1px, transparent 1px);
+    background-size: 100% 15pt; }
+
+body {
+  color: #444;
+  font-family: 'Roboto Slab';
+  font-weight: 300; }
+
+table {
+  width: 100%; }
+  table tr th, table tr td {
+    text-align: left; }
+    table tr th small, table tr td small {
+      font-size: .75em;
+      display: block;
+      padding-left: 2em; }
+
+p {
+  position: relative;
+  top: -1pt;
+  color: #5e5e5e; }
+
+body > * {
+  /* background-color: rgba(255, 0, 0, 0.3); */ }
+
+hr {
+  position: relative;
+  top: -1pt; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: inherit; }
+
+h2 {
+  position: relative;
+  top: 1pt; }
+
+h3 {
+  position: relative;
+  top: -1pt;
+  font-weight: 600;
+  margin-top: 45pt;
+  margin-bottom: 30pt;
+  /* text-transform: uppercase; */ }
+
+h5 {
+  color: #888;
+  text-transform: uppercase;
+  line-height: 2; }
+
+h1 {
+  /* @include fontToBaseline($fs, 0, 0); */
+  /* margin-bottom: $baseline; */
+  /* &:before { */
+  /*   content: quote($fs); */
+  /*   display: block; */
+  /*   position: absolute; */
+  /*   right: 0; */
+  /*   font-size: 8pt; */
+  /*   color: #fff; */
+  /* } */ }
+
+h2 {
+  /* @include fontToBaseline($fs, 0, 0); */
+  /* margin-bottom: $baseline; */
+  /* &:before { */
+  /*   content: quote($fs); */
+  /*   display: block; */
+  /*   position: absolute; */
+  /*   right: 0; */
+  /*   font-size: 8pt; */
+  /*   color: #fff; */
+  /* } */ }
+
+h3 {
+  /* @include fontToBaseline($fs, 0, 0); */
+  /* margin-bottom: $baseline; */
+  /* &:before { */
+  /*   content: quote($fs); */
+  /*   display: block; */
+  /*   position: absolute; */
+  /*   right: 0; */
+  /*   font-size: 8pt; */
+  /*   color: #fff; */
+  /* } */ }
+
+h4 {
+  /* @include fontToBaseline($fs, 0, 0); */
+  /* margin-bottom: $baseline; */
+  /* &:before { */
+  /*   content: quote($fs); */
+  /*   display: block; */
+  /*   position: absolute; */
+  /*   right: 0; */
+  /*   font-size: 8pt; */
+  /*   color: #fff; */
+  /* } */ }
+
+h5 {
+  /* @include fontToBaseline($fs, 0, 0); */
+  /* margin-bottom: $baseline; */
+  /* &:before { */
+  /*   content: quote($fs); */
+  /*   display: block; */
+  /*   position: absolute; */
+  /*   right: 0; */
+  /*   font-size: 8pt; */
+  /*   color: #fff; */
+  /* } */ }
+
+h6 {
+  /* @include fontToBaseline($fs, 0, 0); */
+  /* margin-bottom: $baseline; */
+  /* &:before { */
+  /*   content: quote($fs); */
+  /*   display: block; */
+  /*   position: absolute; */
+  /*   right: 0; */
+  /*   font-size: 8pt; */
+  /*   color: #fff; */
+  /* } */ }
+
+hr {
+  margin-top: -1pt;
+  border-width: 1pt;
+  border-color: #888; }
+
+small {
+  padding-left: .5em;
+  font-size: .95em;
+  color: #888; }
+
+/* https://github.com/mrmrs/fluidity */
+img,
+canvas,
+iframe,
+video,
+svg,
+select,
+textarea {
+  max-width: 100%; }
+
+img {
+  margin: 0 auto; }
+
+a,
+a:visited {
+  color: #3498db; }
+
+p {
+  text-align: justify;
+  margin-top: 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  margin-bottom: 15pt; }
+
+pre {
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  border: none;
+  margin: -1pt;
+  border: 1pt solid #888;
+  margin-bottom: 15pt; }
+
+blockquote {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border: 0;
+  border-left: 5px solid #7a7a7a;
+  font-style: italic;
+  margin-bottom: 15pt; }
+
+ul,
+ol,
+li {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  text-align: left; }
+
+ol,
+ul {
+  margin-bottom: 15pt; }
+
+.right {
+  padding-left: 15pt;
+  float: right; }
+
+.uppercase {
+  text-transform: uppercase; }

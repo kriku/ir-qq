@@ -1,0 +1,44 @@
+// =============================================================================
+// Vertical Rythm
+// -----------------------------------------------------------------------------
+// A small library to create vertical rythm and nice typography.
+// =============================================================================
+// Documentation: https://github.com/saviomuc/SCSS-Vertical-Rythm-Generator
+
+
+// Font Variables
+// =============================================================================
+$base-font-size: 10pt !default;
+$base-line-height: 1.5 !default;
+
+$baseline: $base-font-size * $base-line-height;
+
+// API
+// =============================================================================
+
+// Calculate and Set FontSize
+@mixin fontToBaseline($targetSize, $marginTop:1, $marginBottom:1) {
+  font-size: $targetSize / $base-font-size * 1rem;
+  line-height: $base-line-height * ceil($targetSize / $base-font-size) * 1rem;
+  padding-top: $base-line-height * $marginTop * 1rem;
+  padding-bottom: $base-line-height * $marginBottom * 1rem;
+}
+
+// Vertical Grid for Debugging
+// -----------------------------------------------------------------------------
+@mixin showVerticalGrid($verticalGridColor: red) {
+  position: relative;
+  &:after {
+    content: '';
+    display: block!important;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: linear-gradient(rgba($verticalGridColor, 0.2) 1px, transparent 1px);
+    background-size: 100% ($baseline);
+  }
+}
+

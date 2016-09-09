@@ -2,7 +2,7 @@ pages:
   stage: deploy
   script:
   - mkdir .public
-  - cp tasks/report.pdf .public
+  - cp project/tasks/report.pdf .public
   - mv .public public
   artifacts:
     paths:

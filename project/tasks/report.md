@@ -1,15 +1,15 @@
-##### Information Retrieval <span class="right">innopolis university <br> krikun gosha |
+##### Information Retrieval <span class="right">innopolis university <br> krikun gosha </span>
 -------------------------
 
 ## HW3 <small>Little Research Report</small>
 
 ### Recall and Precision
 
-> Phasellus lacus.
-
 We would compare mainly this two characteristic.
 
-| docId | another | <small> frequency </small> |
+#### But at the first lets consider test doc set:
+
+| docId | terms | <small> tokens </small> |
 | ----- | ------: | :-------- |
 | docs/arrays | 558 | <small> 1948 </small> |
 | docs/mutable-and-immutable-collections | 396 | <small> 1048 </small> |
@@ -20,6 +20,24 @@ We would compare mainly this two characteristic.
 | docs/scala-for-java-programmers | 1055 | <small> 4983 </small> |
 | docs/classes | 240 | <small> 430 </small> |
 | docs/sets | 506 | <small> 1854 </small> |
+
+This is scala code for do that:
+
+```scala
+import java.io.File
+
+class Document(file: File) {
+
+  val name = file.toString()
+  val value = io.Source.fromFile(file).mkString
+  // tokenization
+  val words = value.split("[\\p{Punct}\\s]+")
+  // simple terms retrieval, without even case
+  val dictionary = words.toSet
+
+
+}
+```
 
 
 Aliquam erat volutpat.  Nunc eleifend leo vitae magna.  In id erat non orci commodo lobortis.  Proin neque massa, cursus ut, gravida ut, lobortis eget, lacus.  Sed diam.  Praesent fermentum tempor tellus.  Nullam tempus.  Mauris ac felis vel velit tristique imperdiet.  Donec at pede.  Etiam vel neque nec dui dignissim bibendum.  Vivamus id enim.  Phasellus neque orci, porta a, aliquet quis, semper a, massa.  Phasellus purus.  Pellentesque tristique imperdiet tortor.  Nam euismod tellus id erat.

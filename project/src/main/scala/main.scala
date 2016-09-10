@@ -6,6 +6,7 @@ import scala.language.postfixOps
 import scala.math.{max,min}
 
 object Main {
+
   def editDist[A](a: Iterable[A], b: Iterable[A]) =
     ((0 to b.size).toList /: a)((prev, x) =>
       (prev zip prev.tail zip b).scanLeft(prev.head + 1) {
@@ -22,14 +23,16 @@ object Main {
   }
 
   def main(args: Array[String]):Unit = {
+
     val files = getListOfFiles("docs")
+
     val docs = files.map(file => new Document(file))
     var dictionary = HashMap.empty[String, Int]
     var postings = HashMap.empty[String, ListBuffer[String]]
-    var count = 0
 
     docs.map(doc => {
                print(" | " + doc.name + " | ")
+
                for ((key, value) <- doc.dictionary) {
                  if (dictionary.contains(key)) {
                    dictionary += (key -> (dictionary(key) + value))
@@ -45,34 +48,35 @@ object Main {
                    postings(key) += doc.name
                  }
                }
+
                print(doc.dictionary.toList.length + " | ")
-               print(doc.roughly.toList.length + " | ")
-               count += doc.words.length
-               print("<small> " + doc.words.length + " </small> | ")
+               print(doc.words.length + " |")
                println
              })
-    val stopwords = ListMap(dictionary.toSeq.sortWith(_._2 > _._2):_*).take(9)
-    // var total = 0
-    // stopwords.map{ case(key, value) => {
-    //                  total += value
-    //                  println(key + " : " + value)
-    //                }
-    // }
-    // println(stopwords.zipWithIndex.toList)
-    // println(total)
+
     println(dictionary.toList.length)
-    println(count)
-    val query = "define"
-    println(postings(query).toList)
-    var relevant = HashMap.empty[String, Set[String]]
+
+    val stopwords = ListMap(dictionary.toSeq.sortWith(_._2 > _._2):_*).take(9)
+
+    println(stopwords.toList)
+
+    val query = "compuet"
+
+    if (postings.contains(query)) {
+      println(postings(query).toList)
+    } else {
+      println("Quoted phrase doesn't appear")
+    }
+
+    var relevant = HashMap[String, Set[String]]()
+    relevant += (query -> "".toSet)
+
     postings.keys.map(key => (
-                        if (editDist(key, "define") <= 1) {
-                          if (!relevant.contains(query)) relevant += (query -> postings(key).toSet)
-                          else for (docId <- postings(key)) {
-                            relevant(query) + docId
-                          }
+                        if (editDist(key, query) <= 2) {
+                          relevant.updated(query, (query -> postings(key)))
                           println(key)
                           println(postings(key).toList)
+                          // println(relevant(query).toList)
                         }
                       ))
     println(relevant.toList)

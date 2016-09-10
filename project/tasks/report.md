@@ -31,6 +31,9 @@ sbt
 
 placed in `project/docs/` directory
 
+<div class="row">
+<div class="col-xs-7">
+
 | docId | terms | <small> tokens </small> |
 | ----- | ------: | :-------- |
 | docs/arrays | 502 | <small> 1948 </small> | 
@@ -43,13 +46,17 @@ placed in `project/docs/` directory
 | docs/classes | 227 | <small> 430 </small> | 
 | docs/sets | 453 | <small> 1854 </small> | 
 
+</div>
+</div>
+
 ### 1.1 Total tokens
 
 ```markdown
 tokens : 16273
-terms  : 1709
+terms  : 1709 (merged)
 ```
-_tokens split by Punct and normalized to terms just by lowercase_
+_tokens split by Punct and normalized to terms just by lowercase,
+quotes and apostrophe stays_
 
 ```scala
   val raw = io.Source.fromFile(file).mkString
@@ -91,12 +98,14 @@ or, if you wanna, by percentage to tokens:
 </div>
 </div>
 
-### 2 Boolean search
+### 2 Queries
+
+**define**
 
 <div class="row">
 <div class="col-xs">
 
-Query : **define**
+#### Boolean search
 
 > 200th most frequent
 > occurrence : 15
@@ -105,7 +114,8 @@ Query : **define**
 </div>
 <div class="col-xs">
 
-Result `docId`:
+#### Result `docId`:
+
 ```bash
 docs/arrays
 docs/mutable-and-immutable-collections
@@ -113,16 +123,14 @@ docs/collections-trait-traversable
 docs/maps
 docs/scala-for-java-programmers
 ```
-</div>
-</div>
 
-### 2.1 Edit distance: less or equal 1
+</div>
+</div>
 
 <div class="row">
 <div class="col-xs">
 
-
-Query : **define**
+#### Edit distance, less or equal 1
 
 Matched words: 
 **define, defined, defines**
@@ -133,6 +141,8 @@ Matched words:
 </div>
 <div class="col-xs">
 
+#### Result `docId`:
+
 ```bash
 docs/scala-for-java-programmers
 docs/arrays
@@ -141,6 +151,50 @@ docs/maps
 docs/collections-trait-iterable
 docs/collections-trait-traversable
 docs/mutable-and-immutable-collections                                                                                           
+```
+
+</div>
+</div>
+
+### compuet (with typo)
+
+<div class="row">
+<div class="col-xs">
+
+#### Boolean search
+
+> doesn't appear
+> as and compute
+
+</div>
+<div class="col-xs">
+
+#### Relevant docId:
+
+`none`
+
+</div>
+</div>
+
+<div class="row">
+<div class="col-xs">
+
+#### Edit distance, less or equal 1
+
+Matched words: 
+**computed, computes, complex, compact**
+
+> Recall increase,
+> 2 of 9 documents
+
+</div>
+<div class="col-xs">
+
+#### Relevant docId:
+
+```bash
+docs/collections-trait-traversable
+docs/maps
 ```
 
 </div>

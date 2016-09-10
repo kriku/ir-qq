@@ -115,3 +115,33 @@ docs/scala-for-java-programmers
 ```
 </div>
 </div>
+
+### 2.1 Edit distance: less or equal 1
+
+<div class="row">
+<div class="col-xs">
+
+
+Query : **define**
+
+Matched words: 
+**define, defined, defines**
+
+> Recall increase,
+> 7 of 9 documents
+
+</div>
+<div class="col-xs">
+
+```bash
+docs/scala-for-java-programmers
+docs/arrays
+docs/classes
+docs/maps
+docs/collections-trait-iterable
+docs/collections-trait-traversable
+docs/mutable-and-immutable-collections                                                                                           
+```
+
+</div>
+</div>

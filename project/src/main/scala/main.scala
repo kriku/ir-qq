@@ -2,8 +2,15 @@ import java.io.File
 import scala.collection.immutable.HashMap
 import scala.collection.immutable.ListMap
 import scala.collection.mutable.ListBuffer
+import scala.language.postfixOps
+import scala.math.{max,min}
 
 object Main {
+  def editDist[A](a: Iterable[A], b: Iterable[A]) =
+    ((0 to b.size).toList /: a)((prev, x) =>
+      (prev zip prev.tail zip b).scanLeft(prev.head + 1) {
+        case (h, ((d, v), y)) => min(min(h + 1, v + 1), d + (if (x == y) 0 else 1))
+          }) last
 
   def getListOfFiles(dir: String):List[File] = {
     val d = new File(dir)
@@ -55,7 +62,20 @@ object Main {
     // println(total)
     println(dictionary.toList.length)
     println(count)
-    println(postings("define").toList)
+    val query = "define"
+    println(postings(query).toList)
+    var relevant = HashMap.empty[String, Set[String]]
+    postings.keys.map(key => (
+                        if (editDist(key, "define") <= 1) {
+                          if (!relevant.contains(query)) relevant += (query -> postings(key).toSet)
+                          else for (docId <- postings(key)) {
+                            relevant(query) + docId
+                          }
+                          println(key)
+                          println(postings(key).toList)
+                        }
+                      ))
+    println(relevant.toList)
   }
 
 }
